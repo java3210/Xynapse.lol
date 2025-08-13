@@ -1576,9 +1576,9 @@ function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , re
 			end;
 
 			if bool then
-				Toggle:SetAttribute('Enabled',true);
-
 				ToggleValue.BackgroundColor3 = Color3.new(0, 0, 0)
+				
+				Toggle:SetAttribute('Enabled',true);
 
 				Compkiller:_Animation(ToggleValue,rep.Tween,{
 					Position = UDim2.new(0.75, 0, 0.5, 0)
@@ -1588,9 +1588,8 @@ function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , re
 					BackgroundColor3 = Compkiller.Colors.Toggle
 				})
 			else
-				Toggle:SetAttribute('Enabled',false);
-
 				ToggleValue.BackgroundColor3 = Color3.new(0.509804, 0.509804, 0.509804)
+				Toggle:SetAttribute('Enabled',false);
 				
 				print(tostring(ToggleValue.BackgroundColor3))
 
