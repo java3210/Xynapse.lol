@@ -1625,8 +1625,6 @@ function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , re
 				Compkiller:_Animation(UIStroke,rep.Tween,{
 					Transparency = 0
 				})
-				
-				ToggleValue.BackgroundColor3 = Color3.new(0, 0, 0)
 			else
 				ToggleElement(false,true);
 
