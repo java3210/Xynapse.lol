@@ -1559,7 +1559,7 @@ function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , re
 		ToggleValue.Name = Compkiller:_RandomString()
 		ToggleValue.Parent = Toggle
 		ToggleValue.AnchorPoint = Vector2.new(0.5, 0.5)
-		ToggleValue.BackgroundColor3 = Compkiller.Colors.SwitchColor
+		ToggleValue.BackgroundColor3 = Color3.new(0, 0, 0)
 		ToggleValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		ToggleValue.BorderSizePixel = 0
 		ToggleValue.Position = UDim2.new(0.25, 0, 0.5, 0)
@@ -3806,9 +3806,8 @@ function Compkiller:_LoadElement(Parent: Frame , EnabledLine: boolean , Signal)
 		TextLabel.ZIndex = Zindex + 8
 		TextLabel.Font = Enum.Font.GothamMedium
 		TextLabel.Text = Config.Name;
-		TextLabel.TextColor3 = Compkiller.Colors.SwitchColor
-		TextLabel.TextSize = 12.000
-		TextLabel.TextStrokeTransparency = 0.900
+		TextLabel.TextColor3 = Color3.new(0, 0, 0)
+		TextLabel.TextSize = 13.000
 
 		table.insert(Compkiller.Elements.SwitchColor , {
 			Element = TextLabel,
@@ -8510,10 +8509,33 @@ function Compkiller:Loader(IconId,Duration)
 	Vignette.BorderSizePixel = 0
 	Vignette.Size = UDim2.new(1, 0, 1, 0)
 	Vignette.Image = "rbxassetid://18720640102"
-	Vignette.ImageColor3 = Compkiller.Colors.Highlight
+	Vignette.ImageColor3 = Color3.new(1,1,1)
 	Vignette.ImageTransparency = 1
 	Vignette.AnchorPoint = Vector2.new(0.5,0.5)
 	Vignette.Position = UDim2.fromScale(0.5,0.5)
+
+	local rainbow = Instance.new("UIGradient") do
+		rainbow.Parent = Vignette
+		rainbow.Rotation = 0
+		rainbow.Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 128, 128)),
+			ColorSequenceKeypoint.new(0.17, Color3.fromRGB(255, 178, 128)),
+			ColorSequenceKeypoint.new(0.33, Color3.fromRGB(255, 255, 153)),
+			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(178, 255, 178)),
+			ColorSequenceKeypoint.new(0.67, Color3.fromRGB(153, 204, 255)),
+			ColorSequenceKeypoint.new(0.83, Color3.fromRGB(204, 178, 255)),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(230, 178, 255))
+		})
+
+		task.spawn(function()
+			while rainbow.Parent do
+				for i = 0, 360, 1 do
+					rainbow.Rotation = i
+					task.wait(0.01)
+				end
+			end
+		end)
+	end
 
 	Compkiller:_Animation(Loader,TweenInfo.new(0.55,Enum.EasingStyle.Quint),{
 		BackgroundTransparency = 0.5
