@@ -1559,7 +1559,7 @@ function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , re
 		ToggleValue.Name = Compkiller:_RandomString()
 		ToggleValue.Parent = Toggle
 		ToggleValue.AnchorPoint = Vector2.new(0.5, 0.5)
-		ToggleValue.BackgroundColor3 = Color3.new(1, 1, 1)
+		ToggleValue.BackgroundColor3 = Color3.new(0.509804, 0.509804, 0.509804)
 		ToggleValue.BorderColor3 = Color3.fromRGB(255, 255, 255)
 		ToggleValue.BorderSizePixel = 0
 		ToggleValue.Position = UDim2.new(0.25, 0, 0.5, 0)
@@ -1589,6 +1589,7 @@ function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , re
 				})
 			else
 				ToggleValue.BackgroundColor3 = Color3.new(0.509804, 0.509804, 0.509804)
+				
 				Toggle:SetAttribute('Enabled',false);
 				
 				print(tostring(ToggleValue.BackgroundColor3))
@@ -1632,8 +1633,6 @@ function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , re
 				Compkiller:_Animation(UIStroke,rep.Tween,{
 					Transparency = 0
 				})
-				
-				ToggleValue.BackgroundColor3 = Color3.new(0, 0, 0)
 			else
 				ToggleElement(false,true);
 
