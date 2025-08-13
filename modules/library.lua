@@ -1560,7 +1560,7 @@ function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , re
 		ToggleValue.Parent = Toggle
 		ToggleValue.AnchorPoint = Vector2.new(0.5, 0.5)
 		ToggleValue.BackgroundColor3 = Color3.new(1, 1, 1)
-		ToggleValue.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		ToggleValue.BorderColor3 = Color3.fromRGB(255, 255, 255)
 		ToggleValue.BorderSizePixel = 0
 		ToggleValue.Position = UDim2.new(0.25, 0, 0.5, 0)
 		ToggleValue.Size = UDim2.new(0.550000012, 0, 0.550000012, 0)
@@ -1578,6 +1578,8 @@ function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , re
 			if bool then
 				Toggle:SetAttribute('Enabled',true);
 
+				ToggleValue.BackgroundColor3 = Color3.new(0, 0, 0)
+
 				Compkiller:_Animation(ToggleValue,rep.Tween,{
 					Position = UDim2.new(0.75, 0, 0.5, 0)
 				})
@@ -1587,6 +1589,8 @@ function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , re
 				})
 			else
 				Toggle:SetAttribute('Enabled',false);
+
+				ToggleValue.BackgroundColor3 = Color3.new(0.509804, 0.509804, 0.509804)
 
 				Compkiller:_Animation(ToggleValue,rep.Tween,{
 					Position = UDim2.new(0.25, 0, 0.5, 0)
@@ -1615,9 +1619,11 @@ function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , re
 		local ToggleUI = function(bool)
 			if bool then
 				ToggleElement(Default,true);
-				
-				ToggleValue.BackgroundColor3 = Color3.new(0, 0, 0)
-				
+
+				Compkiller:_Animation(ToggleValue,rep.Tween,{
+					BackgroundTransparency = 0
+				})
+
 				Compkiller:_Animation(Toggle,rep.Tween,{
 					BackgroundTransparency = 0
 				})
@@ -1625,10 +1631,14 @@ function Compkiller:_AddLinkValue(Name , Default , GlobalBlock , LinkValues , re
 				Compkiller:_Animation(UIStroke,rep.Tween,{
 					Transparency = 0
 				})
+				
+				ToggleValue.BackgroundColor3 = Color3.new(0, 0, 0)
 			else
 				ToggleElement(false,true);
 
-				ToggleValue.BackgroundColor3 = Color3.new(1, 1, 1)
+				Compkiller:_Animation(ToggleValue,rep.Tween,{
+					BackgroundTransparency = 1
+				})
 
 				Compkiller:_Animation(Toggle,rep.Tween,{
 					BackgroundTransparency = 1
